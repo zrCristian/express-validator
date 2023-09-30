@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background: #222;
+        font-size: 3rem;
+        color: #ddd;
+    }
+
+    form {
+        display: grid;
+        place-content: center;
+    }
+
+    input,
+    button {
+        padding: 10px 40px;
+    }
+
+    button {
+        border: none;
+        border-radius: 5px;
+        margin: 8px;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+    .error {
+        color: #f00;
+    }
+</style>
+
+<body>
+
+    <form action="/login" method="post">
+
+        <div class="">
+            <label for="username">Nombre de Usuario</label>
+            
+            <% if (typeof errores !== "undefined" && errores.username) { %>
+                <input type="text" name="email" placeholder="Nombre de Usuario" value="<%= errores.username.value %>">
+                
+                <div class="error">
+                    <p> <%= errores.username.msg %></p>
+                </div>
+                <% } else { %>
+                <input type="text" name="username" placeholder="Nombre de Usuario">
+            <% } %>
+        </div>
+
+        <div class="">
+            <label for="email">Email</label>
+
+            <% if (typeof errores !== "undefined" && errores.email) { %>
+                <input type="text" name="email" placeholder="ejemplo@gmail.com" value="<%= errores.email.value %>">
+
+                <div class="error">
+                    <p> <%= errores.email.msg %></p>
+                </div>
+            <% } else { %>
+                <input type="text" name="email" placeholder="ejemplo@gmail.com">
+            <% } %>
+        </div>
+
+        <div class="">
+            <label for="password">Password</label>
+            <input type="password" name="password" placeholder="********">
+        </div>
+
+        <div class="">
+            <label for="password">Age</label>
+            <input type="number" name="age" placeholder="su edad">
+        </div>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+</body>
+
+</html>
